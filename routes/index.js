@@ -7,7 +7,6 @@ import FilesController from '../controllers/FilesController';
 
 const router = Router();
 
-// Defining routes
 router.get('/status', AppController.getStatus);
 router.get('/stats', AppController.getStats);
 router.post('/users', UserController.postNew);
