@@ -5,6 +5,7 @@ import dbClient from '../utils/db';
 import redisClient from '../utils/redis';
 
 const { ObjectId } = require('mongodb');
+// Create a Bull queue for user welcome emails
 const userQueue = new Queue('userQueue');
 
 class UsersController {
