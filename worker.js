@@ -1,16 +1,11 @@
-// worker.js
 import Bull from 'bull';
 import { promises as fsPromises } from 'fs';
-// import path from 'path';
 import { ObjectId } from 'mongodb';
 import imageThumbnail from 'image-thumbnail';
 import dbClient from './utils/db';
 
-// Create a Bull queue for user welcome emails
 const userQueue = new Bull('userQueue');
 
-// Process the queue
-// eslint-disable-next-line consistent-return
 userQueue.process(async (job, done) => {
   const { userId } = job.data;
 
@@ -27,12 +22,9 @@ userQueue.process(async (job, done) => {
 
   console.log(`Welcome ${user.email}!`);
 
-  // simulate sending an email
-  // in real life, we could use a service like Mailgun to send the email here
   done();
 });
 
-// Handle errors
 userQueue.on('failed', (job, err) => {
   console.error(`Job failed with error ${err.message}`);
 });
